@@ -9,22 +9,35 @@ const App = () => {
       contact: 241039657,
       location: "Kotobi",
     },
-    {
-      name: "Baabi",
-      contact: 24103456,
-      location: "Kotoka",
-    },
   ]);
   function handleAddContact() {
     setCont();
   }
-
+  function deleteCont(id) {
+    setCont(cont.filter((cont) => cont.id !== id));
+  }
+  function updateCont(id, updateInfo) {
+    setCont(
+      cont.map((cont) => {
+        if (cont.id === id) {
+          return updateInfo;
+        } else {
+          return cont;
+        }
+      })
+    );
+  }
   return (
-    <div className="border rounded-md flex  h-screen justify-center items-center space-x-5">
+    <div className="border rounded-md flex   h-screen justify-center items-center space-x-5">
       <div className="">
-        <Contacts cont={cont} />
+        <Contacts cont={cont} deleteCont={deleteCont} updateCont={updateCont} />
       </div>
-      <ContactForm setCont={setCont} handleAddContact={handleAddContact} />
+      <ContactForm
+        setCont={setCont}
+        handleAddContact={handleAddContact}
+        deleteCont={deleteCont}
+        updateCont={updateCont}
+      />
     </div>
   );
 };

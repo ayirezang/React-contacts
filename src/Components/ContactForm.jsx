@@ -21,7 +21,7 @@ const ContactForm = ({ setCont, handleAddContact }) => {
   const handleSubmit = (e) => {
     e.preventDefault(e);
 
-    let contacts = { name, contact, location, id: uuid() };
+    const contacts = { name, contact, location, id: uuid() };
     console.log(contacts);
     setCont((prev) => [...prev, contacts]);
 
@@ -65,7 +65,7 @@ const ContactForm = ({ setCont, handleAddContact }) => {
           />
         </label>
         <button className="btn btn-primary w-full" type="submit">
-          submit
+          Submit
         </button>
       </form>
     </div>
